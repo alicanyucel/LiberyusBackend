@@ -1,4 +1,5 @@
 ﻿using Liberyus.Domain.Entities;
+using Liberyus.Domain.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
