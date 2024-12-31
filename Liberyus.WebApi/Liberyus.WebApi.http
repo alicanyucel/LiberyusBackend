@@ -1,0 +1,6 @@
+@Liberyus.WebApi_HostAddress = http://localhost:5042
+
+GET {{Liberyus.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
