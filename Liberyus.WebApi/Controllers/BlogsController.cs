@@ -37,8 +37,9 @@ namespace Liberyus.WebApi.Controllers
             var response = await _mediator.Send(request, cancellationToken);
             return StatusCode(response.StatusCode, response);
         }
-        [HttpPost]
-        public async Task<IActionResult> GetAll(GetAllBlogQuery request, CancellationToken cancellationToken)
+       
+        [HttpGet]
+        public async Task<IActionResult> GetAll([FromQuery] GetAllBlogQuery request, CancellationToken cancellationToken)
         {
             var response = await _mediator.Send(request, cancellationToken);
             return Ok(response);
