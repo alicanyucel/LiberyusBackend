@@ -13,12 +13,13 @@ namespace Liberyus.WebApi.Middleware
 
                 if (!userManager.Users.Any(p => p.UserName == "admin"))
                 {
+                    // migration atıldıgı zaman kullanıcı default olustur
                     AppUser user = new()
                     {
                         UserName = "admin",
                         Email = "admin@admin.com",
-                        FirstName = "Ali Can Yücel",
-                        LastName = "Saydam",
+                        FirstName = "Ali Can",
+                        LastName = "Yücel",
                         EmailConfirmed = true
                     };
                     // usernbame=admin
