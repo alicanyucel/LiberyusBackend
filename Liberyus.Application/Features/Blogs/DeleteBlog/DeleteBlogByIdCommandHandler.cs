@@ -1,4 +1,5 @@
-﻿using Liberyus.Domain.Entities;
+﻿using GenericRepository;
+using Liberyus.Domain.Entities;
 using Liberyus.Domain.Repositories;
 using MediatR;
 
@@ -21,6 +22,10 @@ namespace Liberyus.Application.Features.Blogs.DeleteBlog
             {
                 throw new ArgumentException("Blog bulunamadı!");
             }
+            _blogRepository.Delete(blog);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
+
+            return "Blog silindi";
         }
     }
 }
