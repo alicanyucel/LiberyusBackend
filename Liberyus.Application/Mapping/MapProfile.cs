@@ -1,4 +1,9 @@
 ﻿using AutoMapper;
+using Liberyus.Application.Features.Blogs.AddBlog;
+using Liberyus.Application.Features.Blogs.UpdateBlog;
+using Liberyus.Application.Features.Comments.AddComment;
+using Liberyus.Application.Features.Comments.UpdateCommentById;
+using Liberyus.Domain.Entities;
 
 
 namespace Liberyus.Application.Mapping
@@ -8,8 +13,10 @@ namespace Liberyus.Application.Mapping
         public MappingProfile()
         {
             CreateMap<CreateBlogCommand, Blog>().ReverseMap();
-            CreateMap<UpdateBlogCommand, Blog>().ReverseMap();
-          
+            CreateMap<UpdateBlogByIdCommand, Blog>().ReverseMap();
+            CreateMap<CreateCommentCommand, Comment>().ReverseMap();
+            CreateMap<UpdateCommentByIdCommand, Comment>().ReverseMap();
+
         }
     }
 }
