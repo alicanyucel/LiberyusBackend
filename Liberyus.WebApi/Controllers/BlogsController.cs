@@ -17,7 +17,6 @@ namespace Liberyus.WebApi.Controllers
         
         }
         [HttpGet]
-        [HttpGet]
         public async Task<IActionResult> GetById(int id)
         {
             var result = await _mediator.Send(id);
