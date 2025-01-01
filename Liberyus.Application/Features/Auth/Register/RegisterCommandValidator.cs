@@ -22,8 +22,8 @@ namespace Liberyus.Application.Features.Auth.Register
             RuleFor(p => p.Email).EmailAddress().WithMessage("Geçerli bir mail adresi girin");
             RuleFor(p => p.Password).NotEmpty().WithMessage("Şifre boş olamaz");
             RuleFor(p => p.Password).NotNull().WithMessage("Şifre boş olamaz");
-            RuleFor(p => p.PhoneNumber).MinimumLength(11).WithMessage("Teşefon  11 karakter olmalıdır");
-            RuleFor(p => p.PhoneNumber).MaximumLength(11).WithMessage("Teşefon  11 karakter olmalıdır");
+            RuleFor(p => p.PhoneNumber).MinimumLength(11).WithMessage("Telefon  11 karakter olmalıdır");
+            RuleFor(p => p.PhoneNumber).MaximumLength(11).WithMessage("Telefon  11 karakter olmalıdır");
             RuleFor(p => p.Password).MinimumLength(6).WithMessage("Şifre en az 6 karakter olmalıdır");
             RuleFor(p => p.Password).Matches("[A-Z]").WithMessage("Şife en az 1 adet büyük harf içermelidir!");
             RuleFor(p => p.Password).Matches("[a-z]").WithMessage("Şife en az 1 adet küçük harf içermelidir!");
