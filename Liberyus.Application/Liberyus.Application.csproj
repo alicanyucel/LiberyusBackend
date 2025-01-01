@@ -29,12 +29,4 @@
     <ProjectReference Include="..\Liberyus.Domain\Liberyus.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Blogs\AddBlog\" />
-    <Folder Include="Features\Blogs\DeleteBlog\" />
-    <Folder Include="Features\Blogs\GetAllBlog\" />
-    <Folder Include="Features\Blogs\UpdateBlog\" />
-    <Folder Include="Features\Comments\" />
-  </ItemGroup>
-
 </Project>
