@@ -10,4 +10,6 @@ internal sealed class BlogRepository : Repository<Blog, ApplicationDbContext>,IB
     public BlogRepository(ApplicationDbContext context) : base(context)
     {
     }
+
+    
 }

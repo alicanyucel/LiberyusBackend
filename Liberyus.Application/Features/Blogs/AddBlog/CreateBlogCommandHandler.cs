@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Liberyus.Application.Features.Blogs.AddBlog
 {
-    internal sealed class CreateBlogCommandHandler : IRequestHandler<CreatBlogCommand, ErrorOr<Unit>>
+    internal sealed class CreateBlogCommandHandler : IRequestHandler<CreateBlogCommand, ErrorOr<Unit>>
     {
         private readonly IBlogRepository _blogRepository;
         private readonly IUnitOfWork _unitOfWork;
@@ -19,7 +19,7 @@ namespace Liberyus.Application.Features.Blogs.AddBlog
             _mapper = mapper;
         }
 
-        public async Task<ErrorOr<Unit>> Handle(CreatBlogCommand request, CancellationToken cancellationToken)
+        public async Task<ErrorOr<Unit>> Handle(CreateBlogCommand request, CancellationToken cancellationToken)
         {
             var isTitleExists = await _blogRepository.AnyAsync(p => p.Title == request.Title, cancellationToken);
 

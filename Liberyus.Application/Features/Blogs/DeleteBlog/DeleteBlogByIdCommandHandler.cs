@@ -16,7 +16,7 @@ namespace Liberyus.Application.Features.Blogs.DeleteBlog
 
         public async Task Handle(DeleteBlogByIdCommand request, CancellationToken cancellationToken)
         {
-            Blog blog = await _blogRepository.GetByIdAsync(p => p.Id == request.Id, cancellationToken);
+            Blog? blog = await _blogRepository.GetByExpressionWithTrackingAsync(p => p.Id == request.Id, cancellationToken);
             if (blog is null)
             {
                 throw new ArgumentException("Blog bulunamadı!");

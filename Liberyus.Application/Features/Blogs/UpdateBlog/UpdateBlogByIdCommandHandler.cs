@@ -20,7 +20,7 @@ namespace Liberyus.Application.Features.Blogs.UpdateBlog
 
         public async Task Handle(UpdateBlogByIdCommand request, CancellationToken cancellationToken)
         {
-            Blog blog = await _blogRepository.GetByIdAsync(p => p.Id == request.Id, cancellationToken);
+            Blog? blog = await _blogRepository.GetByExpressionWithTrackingAsync(p => p.Id == request.id, cancellationToken);
             if (blog is null)
             {
                 throw new ArgumentException("Blog bulunamadı!");

@@ -5,6 +5,6 @@ namespace Liberyus.Domain.Repositories
 {
     public interface IBlogRepository : IRepository<Blog>
     {
-        
+      
     }
 }
