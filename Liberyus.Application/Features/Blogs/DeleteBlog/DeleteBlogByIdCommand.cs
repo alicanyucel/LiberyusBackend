@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace Liberyus.Application.Features.Blogs.DeleteBlog
 {
-    internal class DeleteBlogByIdCommand
-    {
-    }
+    public sealed record DeleteBlogByIdCommand(int Id) : IRequest;
 }

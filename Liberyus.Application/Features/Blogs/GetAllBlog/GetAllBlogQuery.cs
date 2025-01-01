@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Liberyus.Domain.Entities;
+using MediatR;
 
 namespace Liberyus.Application.Features.Blogs.GetAllBlog
 {
-    internal class GetAllBlogQuery
-    {
-    }
+    public sealed record GetAllBlogQuery() : IRequest<List<Blog>>;
 }

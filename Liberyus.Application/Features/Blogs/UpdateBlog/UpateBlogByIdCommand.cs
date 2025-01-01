@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+
 
 namespace Liberyus.Application.Features.Blogs.UpdateBlog
 {
-    internal class UpateBlogByIdCommand
-    {
-    }
+    public sealed record UpdateBlogByIdCommand(
+         int id,
+         string Title,
+         string Content,
+         DateTime UpdatedAt,
+         DateTime CreatedAt
+    ) : IRequest;
 }
