@@ -1,6 +1,7 @@
 ﻿using Liberyus.Application.Features.Blogs.AddBlog;
 using Liberyus.Application.Features.Blogs.DeleteBlog;
 using Liberyus.Application.Features.Blogs.GetAllBlog;
+using Liberyus.Application.Features.Blogs.GetByIdBlog;
 using Liberyus.Application.Features.Blogs.UpdateBlog;
 using Liberyus.WebApi.Abstractions;
 using MediatR;
@@ -16,13 +17,18 @@ namespace Liberyus.WebApi.Controllers
         {
         
         }
-        [HttpGet]
-        public async Task<IActionResult> GetById(int id)
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var result = await _mediator.Send(id);
-            return Ok(result);
+            var request = new GetBlogByIdQuery(id);
+            var result = await _mediator.Send(request);
 
+            if (result == null)
+            {
+                return NotFound(); 
+            }
 
+            return Ok(result); 
         }
         [HttpPost]
         public async Task<IActionResult> Create(CreateBlogCommand request, CancellationToken cancellationToken)
@@ -31,7 +37,7 @@ namespace Liberyus.WebApi.Controllers
             var response = await _mediator.Send(request, cancellationToken);
             return StatusCode(response.StatusCode, response);
         }
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> GetAll(GetAllBlogQuery request, CancellationToken cancellationToken)
         {
             var response = await _mediator.Send(request, cancellationToken);
