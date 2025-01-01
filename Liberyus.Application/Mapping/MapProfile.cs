@@ -15,7 +15,7 @@ namespace Liberyus.Application.Mapping
             CreateMap<CreateCommendCommand, Blog>().ReverseMap();
             CreateMap<UpdateBlogByIdCommand, Blog>().ReverseMap();
             CreateMap<CreateCommentCommand, Comment>().ReverseMap();
-            CreateMap<UpdateCommentByIdCommand, Comment>().ReverseMap();
+            CreateMap<UpdateCommendByIdCommand, Comment>().ReverseMap();
 
         }
     }

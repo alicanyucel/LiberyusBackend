@@ -20,7 +20,7 @@ namespace Liberyus.Application.Features.Comments.UpdateCommentById
 
         public async Task Handle(UpdateCommendByIdCommand request, CancellationToken cancellationToken)
         {
-            Comment? comment = await _commentRepository.GetByExpressionWithTrackingAsync(p => p.Id == request.id, cancellationToken);
+           Comment? comment = await _commentRepository.GetByExpressionWithTrackingAsync(p => p.Id == request.id, cancellationToken);
             if (comment is null)
             {
                 throw new ArgumentException("yorum bulunamadı!");
