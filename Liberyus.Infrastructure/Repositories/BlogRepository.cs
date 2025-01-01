@@ -5,7 +5,7 @@ using Liberyus.Infrastructure.Context;
 
 namespace Liberyus.Infrastructure.Repositories;
 
-internal sealed class BlogRepository : Repository<Blog, ApplicationDbContext>,IBlogRepository
+internal sealed class BlogRepository : Repository<Blog, ApplicationDbContext>,ICommendRepository
 {
     public BlogRepository(ApplicationDbContext context) : base(context)
     {

@@ -6,20 +6,20 @@ using MediatR;
 
 namespace Liberyus.Application.Features.Blogs.AddBlog
 {
-    internal sealed class CreateBlogCommandHandler : IRequestHandler<CreateBlogCommand, ErrorOr<Unit>>
+    internal sealed class CreateBlogCommandHandler : IRequestHandler<CreateCommendCommand, ErrorOr<Unit>>
     {
-        private readonly IBlogRepository _blogRepository;
+        private readonly ICommendRepository _blogRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public CreateBlogCommandHandler(IBlogRepository blogRepository, IUnitOfWork unitOfWork, IMapper mapper)
+        public CreateBlogCommandHandler(ICommendRepository blogRepository, IUnitOfWork unitOfWork, IMapper mapper)
         {
             _blogRepository = blogRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
-        public async Task<ErrorOr<Unit>> Handle(CreateBlogCommand request, CancellationToken cancellationToken)
+        public async Task<ErrorOr<Unit>> Handle(CreateCommendCommand request, CancellationToken cancellationToken)
         {
             var isTitleExists = await _blogRepository.AnyAsync(p => p.Title == request.Title, cancellationToken);
 

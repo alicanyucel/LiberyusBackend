@@ -7,11 +7,11 @@ namespace Liberyus.Application.Features.Blogs.UpdateBlog
 {
     internal sealed class UpdateBlogByIdCommandHandler : IRequestHandler<UpdateBlogByIdCommand>
     {
-        private readonly IBlogRepository _blogRepository;
+        private readonly ICommendRepository _blogRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public UpdateBlogByIdCommandHandler(IBlogRepository blogRepository, IUnitOfWork unitOfWork, IMapper mapper)
+        public UpdateBlogByIdCommandHandler(ICommendRepository blogRepository, IUnitOfWork unitOfWork, IMapper mapper)
         {
             _blogRepository = blogRepository;
             _unitOfWork = unitOfWork;

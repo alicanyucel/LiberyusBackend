@@ -6,9 +6,9 @@ namespace Liberyus.Application.Features.Blogs.DeleteBlog
 {
     internal sealed class DeleteBlogByIdCommandHandler : IRequestHandler<DeleteBlogByIdCommand>
     {
-        private readonly IBlogRepository _blogRepository;
+        private readonly ICommendRepository _blogRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public DeleteBlogByIdCommandHandler(IBlogRepository blogRepository, IUnitOfWork unitOfWork)
+        public DeleteBlogByIdCommandHandler(ICommendRepository blogRepository, IUnitOfWork unitOfWork)
         {
             _blogRepository = blogRepository;
             _unitOfWork = unitOfWork;

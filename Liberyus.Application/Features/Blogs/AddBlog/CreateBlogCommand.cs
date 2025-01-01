@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Liberyus.Application.Features.Blogs.AddBlog
 {
-    public sealed record CreateBlogCommand(
+    public sealed record CreateCommendCommand(
          string Title,
          string Content,
          DateTime UpdatedAt,

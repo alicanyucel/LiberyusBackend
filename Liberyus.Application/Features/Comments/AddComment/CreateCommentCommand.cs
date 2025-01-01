@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ErrorOr;
+using MediatR;
 
 namespace Liberyus.Application.Features.Comments.AddComment
 {
-    internal class CreateCommentCommand
-    {
-    }
+    public sealed record CreateCommentCommand(
+          string Message,string Title
+          ) : IRequest<ErrorOr<Unit>>;
 }
