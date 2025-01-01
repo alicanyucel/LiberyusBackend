@@ -12,7 +12,7 @@ namespace Liberyus.WebApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            // swagger uygulama ayaða kaldýýrldý
             // cors
             builder.Services.AddCors(opt =>
             {
