@@ -1,10 +1,8 @@
-﻿using Liberyus.Application.Behaviors;
+﻿using FluentValidation;
+using Liberyus.Application.Behaviors;
+using Liberyus.Domain.Entities;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Liberyus.Application
 {
@@ -12,17 +10,21 @@ namespace Liberyus.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
+
             services.AddAutoMapper(typeof(DependencyInjection).Assembly);
 
             services.AddMediatR(conf =>
             {
-                conf.RegisterServicesFromAssemblies(typeof(DependencyInjection).Assembly);
+                conf.RegisterServicesFromAssemblies(
+                    typeof(DependencyInjection).Assembly,
+                    typeof(AppUser).Assembly);
                 conf.AddOpenBehavior(typeof(ValidationBehavior<,>));
             });
 
-            services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
+            object value = services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
 
             return services;
+
         }
     }
 }

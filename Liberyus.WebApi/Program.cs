@@ -1,4 +1,5 @@
 
+using Liberyus.Infrastructure;
 using Liberyus.WebApi.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
@@ -19,7 +20,7 @@ namespace Liberyus.WebApi
                     builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
                 });
             });
-            builder.Services.AddApplication();
+          
             builder.Services.AddInfrastructure(builder.Configuration);
 
             builder.Services.AddExceptionHandler<ExceptionHandler>();
