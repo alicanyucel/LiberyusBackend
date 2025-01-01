@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ErrorOr;
+using MediatR;
+
 
 namespace Liberyus.Application.Features.Blogs.AddBlog
 {
-    internal class CreateBlogCommand
-    {
-    }
+    public sealed record CreatBlogCommand(
+         string Title,
+         string Content,
+         DateTime UpdatedAt,
+         DateTime CreatedAt
+        ) : IRequest<ErrorOr<Unit>>;
 }
