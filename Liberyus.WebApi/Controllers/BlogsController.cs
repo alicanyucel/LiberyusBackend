@@ -46,7 +46,7 @@ namespace Liberyus.WebApi.Controllers
 
         }
         [HttpPut]
-        public async Task<IActionResult> UpdateCarById(UpdateBlogByIdCommand request, CancellationToken cancellationToken)
+        public async Task<IActionResult> UpdateBlogById(UpdateBlogByIdCommand request, CancellationToken cancellationToken)
         {
             var response = await _mediator.Send(request, cancellationToken);
             return StatusCode(response.StatusCode, response);
