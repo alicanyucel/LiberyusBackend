@@ -2,43 +2,24 @@
 using Liberyus.Domain.Entities;
 using Liberyus.Domain.Repositories;
 using MediatR;
+using TS.Result;
 
 namespace Liberyus.Application.Features.Blogs.UpdateBlog
 {
-    internal sealed class UpdateBlogByIdCommandHandler : IRequestHandler<UpdateBlogByIdCommand>
+    internal sealed class UpdateBlogByIdCommandHandler(IBlogRepository blogRepository, IUnitOfWork unitOfWork, IMapper mapper) : IRequestHandler<UpdateBlogByIdCommand, Result<string>>
     {
-        private readonly ICommendRepository _blogRepository;
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
-
-        public UpdateBlogByIdCommandHandler(ICommendRepository blogRepository, IUnitOfWork unitOfWork, IMapper mapper)
+        public async Task<Result<string>> Handle(UpdateBlogByIdCommand request, CancellationToken cancellationToken)
         {
-            _blogRepository = blogRepository;
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
-        }
-
-        public async Task Handle(UpdateBlogByIdCommand request, CancellationToken cancellationToken)
-        {
-            Blog? blog = await _blogRepository.GetByExpressionWithTrackingAsync(p => p.Id == request.id, cancellationToken);
-            if (blog is null)
+            Blog blog = await blogRepository.GetByExpressionWithTrackingAsync(P => P.Id == request.id, cancellationToken);
+            if (blog == null)
             {
-                throw new ArgumentException("Blog bulunamadı!");
+                return Result<string>.Failure("blog not found");
             }
+            mapper.Map(request, blog);
+            blogRepository.Update(blog);
+            await unitOfWork.SaveChangesAsync(cancellationToken);
+            return "Blog update is successful";
 
-            if (blog.Title != request.Title)
-            {
-                var isBlogExists = await _blogRepository.AnyAsync(p => p.Title == request.Title, cancellationToken);
-
-                if (isBlogExists)
-                {
-                    throw new ArgumentException("Bu blog daha önce oluşturulmuş!");
-                }
-            }
-
-            _mapper.Map(request, blog);
-
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

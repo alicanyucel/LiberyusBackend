@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using TS.Result;
 
 
 namespace Liberyus.Application.Features.Blogs.UpdateBlog
@@ -9,5 +10,5 @@ namespace Liberyus.Application.Features.Blogs.UpdateBlog
          string Content,
          DateTime UpdatedAt,
          DateTime CreatedAt
-    ) : IRequest;
+    ) : IRequest<Result<string>>;
 }

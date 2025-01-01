@@ -7,9 +7,9 @@ namespace Liberyus.Application.Features.Blogs.GetAllBlog
 {
     internal sealed class GetAllBlogQueryHandler : IRequestHandler<GetAllBlogQuery, List<Blog>>
     {
-        private readonly ICommendRepository _blogRepository;
+        private readonly IBlogRepository _blogRepository;
 
-        public GetAllBlogQueryHandler(ICommendRepository blogRepository)
+        public GetAllBlogQueryHandler(IBlogRepository blogRepository)
         {
             _blogRepository = blogRepository;
         }
