@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using TS.Result;
 
 namespace Liberyus.Application.Features.Comments.UpdateComment
 {
-    internal class UpdateCommentByIdCommand
-    {
-    }
+    public sealed record UpdateCommentCommand(
+         int Id,string Title,
+        string Mesage):IRequest<Result<string>>;
 }

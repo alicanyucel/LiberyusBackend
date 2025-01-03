@@ -2,6 +2,7 @@
 using Liberyus.Application.Features.Comments.DeleteCommentById;
 using Liberyus.Application.Features.Comments.GetAllComment;
 using Liberyus.Application.Features.Comments.GetCommentById;
+using Liberyus.Application.Features.Comments.UpdateComment;
 using Liberyus.WebApi.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -52,5 +53,12 @@ public class CommentsController : ApiController
         return Ok(response);
 
     }
-  
+    [HttpPut]
+    public async Task<IActionResult> UpdateCommentById(UpdateCommentCommand request, CancellationToken cancellationToken)
+    {
+        var response = await _mediator.Send(request, cancellationToken);
+        return StatusCode(response.StatusCode, response);
+
+    }
+
 }
