@@ -1,4 +1,5 @@
 ﻿using Liberyus.Application.Features.Comments.AddComment;
+using Liberyus.Application.Features.Comments.DeleteCommentById;
 using Liberyus.Application.Features.Comments.GetAllComment;
 using Liberyus.Application.Features.Comments.GetCommentById;
 using Liberyus.WebApi.Abstractions;
@@ -30,11 +31,18 @@ public class CommentsController : ApiController
         return Ok(result);
     }
     [HttpPost]   //   post error i'm looking error
-    public async Task<IActionResult> Create(AddCommentCommand request, CancellationToken cancellationToken)
+    public async Task<IActionResult> Create([FromQuery]AddCommentCommand request, CancellationToken cancellationToken)
     {
 
         var response = await _mediator.Send(request, cancellationToken);
         return StatusCode(response.StatusCode, response);
+    }
+    [HttpDelete] // basarılı
+    public async Task<IActionResult> DeleteCommentById(DeleteCommentByIdCommand request, CancellationToken cancellationToken)
+    {
+        var response = await _mediator.Send(request, cancellationToken);
+        return StatusCode(response.StatusCode, response);
+
     }
 
     [HttpGet] // success

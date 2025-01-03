@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using TS.Result;
 
 namespace Liberyus.Application.Features.Comments.DeleteCommentById
 {
-    internal class DeleteCommentByIdCommand
-    {
-    }
+    public sealed record DeleteCommentByIdCommand(int Id) : IRequest<Result<string>>;
 }
