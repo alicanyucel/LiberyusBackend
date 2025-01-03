@@ -1,12 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Liberyus.Domain.Entities;
+using Liberyus.Domain.Repositories;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Liberyus.Application.Features.Comments.GetCommentById
 {
-    internal class GetByIdCommentCommandHandler
+    internal sealed class GetByIdCommentQueryHandler : IRequestHandler<GetByIdCommentQuery, Comment>
     {
+        private readonly ICommentRepository _commentRepository;
+
+        public GetByIdCommentQueryHandler(ICommentRepository commentRepository)
+        {
+            _commentRepository = commentRepository;
+        }
+
+        public async Task<Comment> Handle(GetByIdCommentQuery request, CancellationToken cancellationToken)
+        {
+            return await _commentRepository.GetAll().FirstOrDefaultAsync(c => c.Id == request.Id, cancellationToken);
+        }
     }
 }

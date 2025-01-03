@@ -1,10 +1,11 @@
 ﻿using Liberyus.Application.Features.Comments.AddComment;
 using Liberyus.Application.Features.Comments.GetAllComment;
+using Liberyus.Application.Features.Comments.GetCommentById;
 using Liberyus.WebApi.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
+
 
 namespace Liberyus.WebApi.Controllers;
 [AllowAnonymous]
@@ -13,8 +14,22 @@ public class CommentsController : ApiController
     public CommentsController(IMediator mediator) : base(mediator)
     {
     }
- //   post error i'm looking error
-    [HttpPost]
+
+  
+    [HttpGet("{id:int}")] // success
+    public async Task<IActionResult> GetById([FromRoute] int id)
+    {
+        var request = new GetByIdCommentQuery(id);
+        var result = await _mediator.Send(request);
+
+        if (result == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(result);
+    }
+    [HttpPost]   //   post error i'm looking error
     public async Task<IActionResult> Create(AddCommentCommand request, CancellationToken cancellationToken)
     {
 

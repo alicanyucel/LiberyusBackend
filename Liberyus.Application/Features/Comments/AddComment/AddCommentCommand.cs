@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Liberyus.Domain.Entities;
+using MediatR;
 using TS.Result;
 
 namespace Liberyus.Application.Features.Comments.AddComment
