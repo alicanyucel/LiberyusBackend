@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using TS.Result;
 
 namespace Liberyus.Application.Features.Comments.AddComment
 {
-    internal class AddCommentCommand
-    {
-    }
+  public sealed record AddCommentCommand(string Title,string Message): IRequest<Result<string>>;
 }

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Liberyus.Domain.Entities;
+using MediatR;
+
 
 namespace Liberyus.Application.Features.Comments.GetAllComment
 {
-    internal class GetAllCommentQuery
-    {
-    }
+    public sealed record GetAllCommentQuery() : IRequest<List<Comment>>;
 }
