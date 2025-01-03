@@ -41,7 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Comments\" />
+    <Folder Include="Features\Comments\GetCommentById\" />
   </ItemGroup>
 
 </Project>
