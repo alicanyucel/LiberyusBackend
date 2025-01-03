@@ -1,4 +1,4 @@
-﻿using Liberyus.Application.Features.Blogs.AddBlog;
+﻿using Liberyus.Application.Features.Comments.AddComment;
 using Liberyus.Application.Features.Comments.GetAllComment;
 using Liberyus.WebApi.Abstractions;
 using MediatR;
@@ -14,7 +14,7 @@ public class CommentsController : ApiController
     }
    
     [HttpPost]
-    public async Task<IActionResult> Create(CreateCommentCommand request, CancellationToken cancellationToken)
+    public async Task<IActionResult> Create(AddCommentCommand request, CancellationToken cancellationToken)
     {
 
         var response = await _mediator.Send(request, cancellationToken);

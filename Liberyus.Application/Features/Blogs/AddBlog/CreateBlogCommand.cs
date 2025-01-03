@@ -6,7 +6,7 @@ using TS.Result;
 namespace Liberyus.Application.Features.Blogs.AddBlog
 {
   
-    public sealed record CreateCommentCommand(
+    public sealed record CreateBlogCommand(
          string Title,
         string Content,
         DateTime UpdatedAt,
