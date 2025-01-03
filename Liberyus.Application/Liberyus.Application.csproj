@@ -40,8 +40,4 @@
     <ProjectReference Include="..\Liberyus.Domain\Liberyus.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Comments\GetCommentById\" />
-  </ItemGroup>
-
 </Project>
