@@ -1,14 +1,9 @@
 ﻿
-using Liberyus.Domain.Abstractions;
-
 namespace Liberyus.Domain.Entities
 {
-    public class Comment:Entity
+    public class CommentDto
     {
-        //cay
         public string Title {  get; set; }
         public string Message { get; set; }
-        public int BlogId { get; set; }
-       
     }
 }

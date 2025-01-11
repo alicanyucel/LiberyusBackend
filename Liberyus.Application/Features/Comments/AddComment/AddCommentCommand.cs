@@ -4,6 +4,5 @@ using TS.Result;
 
 namespace Liberyus.Application.Features.Comments.AddComment
 {
-  public sealed record AddCommentCommand(Blog Blog,
-      string Title,string Message): IRequest<Result<string>>;
+  public sealed record AddCommentCommand(int BlogId,string Title,string Message): IRequest<Result<string>>;
 }
